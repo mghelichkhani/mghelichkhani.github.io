@@ -6,7 +6,7 @@ interface FooterProps {
 }
 
 export function Footer({ cvData }: FooterProps) {
-  const { contact, person } = cvData;
+  const { contact } = cvData;
   const lastUpdated = new Date().toLocaleDateString('en-US', { 
     year: 'numeric', 
     month: 'long', 

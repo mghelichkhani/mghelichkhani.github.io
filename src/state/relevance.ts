@@ -9,7 +9,6 @@ import type {
  */
 function computeRecencyScore(role: Role): number {
   const now = new Date();
-  const startDate = new Date(role.startDate);
   const endDate = role.endDate ? new Date(role.endDate) : now;
   
   // Use end date if available, otherwise start date
