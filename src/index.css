@@ -95,6 +95,11 @@
   [role="button"] {
     cursor: pointer;
   }
+
+  /* Hide scrollbar for horizontal scrolling tabs */
+  [role="tablist"]::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 

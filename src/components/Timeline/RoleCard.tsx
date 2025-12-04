@@ -31,9 +31,9 @@ export function RoleCard({ role, cvData, index = 0 }: RoleCardProps) {
           <h3 className="text-base font-semibold text-fg-primary">
             {`${role.title} — ${role.company}`}
           </h3>
-          <div className="flex items-center gap-3 mt-1">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mt-1">
             <p className="text-sm text-fg-muted">{role.location}</p>
-            <span className="text-fg-muted/50">•</span>
+            <span className="hidden sm:inline text-fg-muted/50">•</span>
             <p className="text-xs font-semibold tracking-[0.1em] uppercase text-fg-tertiary select-none">
               {startLabel} — {endLabel}
             </p>

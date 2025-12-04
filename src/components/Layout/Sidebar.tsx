@@ -16,17 +16,18 @@ export function Sidebar({ cvData }: SidebarProps) {
         className="overflow-hidden"
         padding="none"
       >
-        {/* Profile image covering top */}
-        <div className="relative w-full h-[17.5rem] -mb-20">
-          <img 
-            src="/photo.jpeg" 
-            alt={cvData.person.fullName}
-            className="w-full h-full object-cover select-none"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/20"></div>
+        {/* Profile image - circle cropped on top */}
+        <div className="flex justify-center pt-6 pb-2">
+          <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden ring-4 ring-white/50">
+            <img 
+              src="/avatar.png" 
+              alt={cvData.person.fullName}
+              className="w-full h-full object-cover select-none"
+            />
+          </div>
         </div>
         
-        <div className="p-6 pt-24 space-y-5">
+        <div className="p-6 pt-4 space-y-5">
           <div>
             <p className="text-base font-semibold text-fg-primary">Based in {cvData.person.location}</p>
             <p className="text-sm text-fg-muted mt-1">Open for remote / hybrid (EU)</p>

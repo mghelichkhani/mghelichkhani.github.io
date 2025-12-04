@@ -8,14 +8,14 @@ interface AnimatedTabsProps<T extends string = string> {
 
 export function AnimatedTabs<T extends string = string>({ tabs, activeTab, onTabChange }: AnimatedTabsProps<T>) {
   return (
-    <div className="inline-flex rounded-2xl glass p-1.5 gap-1" role="tablist">
+    <div className="inline-flex rounded-2xl glass p-1.5 gap-1 overflow-x-auto max-w-full" role="tablist" style={{ WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
       {tabs.map((tab) => {
         const isActive = tab.id === activeTab;
         return (
           <button
             key={tab.id}
             onClick={() => onTabChange(tab.id)}
-            className={`relative px-5 py-2.5 rounded-lg text-base font-semibold transition-all duration-200 min-h-[44px] cursor-pointer glass-hover ${
+            className={`relative px-3 sm:px-5 py-2 sm:py-2.5 rounded-lg text-sm sm:text-base font-semibold transition-all duration-200 min-h-[40px] sm:min-h-[44px] cursor-pointer glass-hover whitespace-nowrap flex-shrink-0 ${
               isActive
                 ? 'text-fg-primary'
                 : 'text-fg-tertiary hover:text-fg-primary'

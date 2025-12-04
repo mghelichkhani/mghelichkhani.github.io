@@ -17,8 +17,8 @@ export function Footer({ cvData }: FooterProps) {
     <footer className="glass glass-light border-t border-white/20 mt-16">
       <div className="max-w-[90rem] mx-auto px-10 py-8">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          {/* Left: Last updated */}
-          <div className="text-sm text-fg-muted select-none">
+          {/* Left: Last updated (desktop) */}
+          <div className="hidden md:block text-sm text-fg-muted select-none">
             Last updated: {lastUpdated}
           </div>
 
@@ -53,9 +53,14 @@ export function Footer({ cvData }: FooterProps) {
           </div>
 
           {/* Right: Download simplified CV */}
-          <GlassButton className="px-6 py-3.5 border border-secondary-400/20 hover:border-secondary-400/30">
+          <GlassButton size="sm" className="sm:px-6 sm:py-3.5 border border-secondary-400/20 hover:border-secondary-400/30">
             Download simplified CV
           </GlassButton>
+
+          {/* Bottom: Last updated (mobile) */}
+          <div className="md:hidden text-sm text-fg-muted select-none text-center">
+            Last updated: {lastUpdated}
+          </div>
         </div>
       </div>
     </footer>

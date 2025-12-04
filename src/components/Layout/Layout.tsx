@@ -20,20 +20,6 @@ export function Layout({
 
       {/* Main content */}
       <main className="flex-1 max-w-[90rem] mx-auto px-10 py-8 grid grid-cols-1 md:grid-cols-4 gap-10 relative">
-        {/* Floating filter button for mobile */}
-        <GlassButton
-          className="md:hidden fixed bottom-4 right-4 px-5 py-3 text-base z-10 shadow-lg shadow-accent-500/40"
-          variant="accent"
-          onClick={() => {
-            // Scroll to filters section
-            const filtersSection = document.querySelector('details');
-            filtersSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            filtersSection?.setAttribute('open', '');
-          }}
-        >
-          Filters
-        </GlassButton>
-
         <Sidebar cvData={cvData} />
 
         {/* Main column */}

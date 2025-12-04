@@ -22,17 +22,19 @@ export function Header({ cvData }: HeaderProps) {
             </p>
           </div>
 
-          <div className="flex gap-3">
+          <div className="flex flex-col sm:flex-row gap-3">
             <GlassButton
               as="a"
               href={`mailto:${contact.email}`}
               variant="accent"
-              className="px-6 py-3.5"
+              size="sm"
+              className="sm:px-6 sm:py-3.5"
             >
               Contact
             </GlassButton>
             <GlassButton
-              className="px-6 py-3.5 border border-secondary-400/20 hover:border-secondary-400/30"
+              size="sm"
+              className="sm:px-6 sm:py-3.5 border border-secondary-400/20 hover:border-secondary-400/30"
             >
               Download simplified CV
             </GlassButton>
