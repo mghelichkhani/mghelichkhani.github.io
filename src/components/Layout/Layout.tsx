@@ -2,7 +2,6 @@ import { Header } from './Header';
 import { Sidebar } from './Sidebar';
 import { Footer } from './Footer';
 import type { CVData } from '../../models/cv-types';
-import { GlassButton } from '../common/GlassButton';
 
 interface LayoutProps {
   cvData: CVData;
