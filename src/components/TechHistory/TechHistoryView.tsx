@@ -81,7 +81,7 @@ export function TechHistoryView({ cvData }: TechHistoryViewProps) {
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full glass-ios rounded-2xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2 transition-all text-fg-primary placeholder:text-fg-subtle"
+            className="w-full glass rounded-2xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2 transition-all text-fg-primary placeholder:text-fg-subtle"
             placeholder="Search for Vue, React, Vite, Figma..."
             aria-label="Search technologies"
           />
@@ -99,7 +99,7 @@ export function TechHistoryView({ cvData }: TechHistoryViewProps) {
           </div>
         </div>
 
-        <div className="glass-ios rounded-2xl p-4 overflow-y-auto text-sm min-h-[300px]">
+        <div className="glass rounded-2xl p-4 overflow-y-auto text-sm min-h-[300px]">
           {sortedTags.length === 0 ? (
             <p className="text-fg-subtle text-center py-8">
               No technologies match your search.

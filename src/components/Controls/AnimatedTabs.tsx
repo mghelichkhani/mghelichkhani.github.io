@@ -8,7 +8,7 @@ interface AnimatedTabsProps<T extends string = string> {
 
 export function AnimatedTabs<T extends string = string>({ tabs, activeTab, onTabChange }: AnimatedTabsProps<T>) {
   return (
-    <div className="inline-flex rounded-2xl glass-ios p-1.5 gap-1" role="tablist">
+    <div className="inline-flex rounded-2xl glass p-1.5 gap-1" role="tablist">
       {tabs.map((tab) => {
         const isActive = tab.id === activeTab;
         return (

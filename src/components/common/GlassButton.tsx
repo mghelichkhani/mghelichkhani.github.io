@@ -18,8 +18,8 @@ const sizeClasses: Record<GlassButtonSize, string> = {
 };
 
 const variantClasses: Record<GlassButtonVariant, string> = {
-  default: 'glass-ios glass-hover text-fg-secondary hover:text-fg-primary',
-  accent: 'glass-ios-accent glass-hover-accent text-white shadow-md shadow-accent-500/30'
+  default: 'glass glass-hover text-fg-secondary hover:text-fg-primary',
+  accent: 'glass glass-accent glass-hover-accent text-white shadow-md shadow-accent-500/30'
 };
 
 export function GlassButton<T extends React.ElementType = 'button'>({

@@ -20,9 +20,9 @@ const paddingClasses: Record<CardPadding, string> = {
 };
 
 const variantClasses: Record<CardVariant, string> = {
-  default: 'glass-ios-card',
-  light: 'glass-ios-light',
-  modal: 'glass-ios-modal'
+  default: 'glass glass-card',
+  light: 'glass glass-light',
+  modal: 'glass glass-modal'
 };
 
 export function Card<T extends React.ElementType = 'article'>({

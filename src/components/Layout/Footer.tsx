@@ -14,7 +14,7 @@ export function Footer({ cvData }: FooterProps) {
   });
 
   return (
-    <footer className="glass-ios-light border-t border-white/20 mt-16">
+    <footer className="glass glass-light border-t border-white/20 mt-16">
       <div className="max-w-[90rem] mx-auto px-10 py-8">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           {/* Left: Last updated */}

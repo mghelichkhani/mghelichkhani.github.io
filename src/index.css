@@ -36,25 +36,12 @@
     line-height: 1.5;
     position: relative;
     min-height: 100vh;
-    background-color: #f8fafc; /* Light base color */
-  }
-
-  /* SVG background with ~60% opacity using pseudo-element */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    /* SVG background */
     background-image: url('/bg.svg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    opacity: 0.6;
-    z-index: -1;
-    pointer-events: none;
   }
 
   /* Headings use Montserrat */
@@ -98,254 +85,112 @@
   .cursor-pointer,
   [onclick],
   [data-interactive="true"] {
-    cursor: pointer !important;
+    cursor: pointer;
   }
 
   /* Interactive tags and navigation items */
-  button[class*="glass-ios"],
-  a[class*="glass-ios"],
+  button[class*="glass"],
+  a[class*="glass"],
   [role="tab"],
   [role="button"] {
-    cursor: pointer !important;
+    cursor: pointer;
   }
 }
 
 
-/* iOS 26 Liquid Glass utilities - Enhanced with proper layering (highlight, shadow, illumination) */
+/* Simplified Glass Morphism utilities */
 @layer utilities {
-  /* Base glass effect with three-layer system: highlight, shadow, illumination */
-  .glass-ios {
+  /* Base glass effect - single class with opacity/blur modifiers */
+  .glass {
     position: relative;
-    /* Illumination layer - base material properties */
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.9) 0%,
-      rgba(255, 255, 255, 0.55) 40%,
-      rgba(255, 255, 255, 0.16) 100%
-    );
-    /* Refraction effect - bends and warps light */
-    backdrop-filter: blur(24px) saturate(190%) brightness(1.12) contrast(1.05);
-    -webkit-backdrop-filter: blur(24px) saturate(190%) brightness(1.12) contrast(1.05);
-    /* Highlight layer - light casting */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.2) 100%);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.6);
-    border-top: 1px solid rgba(255, 255, 255, 0.85);
-    border-left: 1px solid rgba(255, 255, 255, 0.8);
-    /* Shadow layer - depth and separation */
+    border-top: 1px solid rgba(255, 255, 255, 0.8);
+    border-left: 1px solid rgba(255, 255, 255, 0.75);
     box-shadow: 
-      /* Outer shadow for depth */
-      0 8px 32px 0 rgba(0, 0, 0, 0.12),
-      0 2px 8px 0 rgba(0, 0, 0, 0.08),
-      /* Inner highlight - top light */
-      inset 0 1px 2px 0 rgba(255, 255, 255, 0.75),
-      inset 0 0 1px 0 rgba(255, 255, 255, 0.65),
-      /* Inner shadow - bottom depth */
-      inset 0 -1px 2px 0 rgba(0, 0, 0, 0.12),
-      inset 0 -2px 4px 0 rgba(255, 255, 255, 0.18);
+      0 8px 32px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.1);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, opacity;
+    transform: translateZ(0);
   }
 
-  .glass-ios:hover {
+  /* Opacity variants */
+  .glass-light {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0.4) 100%);
+    backdrop-filter: blur(32px) saturate(200%);
+    -webkit-backdrop-filter: blur(32px) saturate(200%);
+    border-color: rgba(255, 255, 255, 0.75);
+    border-top-color: rgba(255, 255, 255, 0.9);
+    border-left-color: rgba(255, 255, 255, 0.85);
+  }
+
+  .glass-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0.3) 100%);
+    backdrop-filter: blur(28px) saturate(195%);
+    -webkit-backdrop-filter: blur(28px) saturate(195%);
     border-color: rgba(255, 255, 255, 0.7);
-  }
-
-  .glass-ios:active {
-    box-shadow: 
-      0 4px 20px 0 rgba(0, 0, 0, 0.1),
-      inset 0 1px 1px 0 rgba(255, 255, 255, 0.6),
-      inset 0 -1px 1px 0 rgba(255, 255, 255, 0.25);
-  }
-
-  /* Light variant - more opaque with enhanced layering */
-  .glass-ios-light {
-    position: relative;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.95) 0%,
-      rgba(255, 255, 255, 0.7) 45%,
-      rgba(255, 255, 255, 0.35) 100%
-    );
-    backdrop-filter: blur(32px) saturate(200%) brightness(1.2) contrast(1.1);
-    -webkit-backdrop-filter: blur(32px) saturate(200%) brightness(1.2) contrast(1.1);
-    border: 1px solid rgba(255, 255, 255, 0.75);
-    border-top: 1px solid rgba(255, 255, 255, 0.9);
-    border-left: 1px solid rgba(255, 255, 255, 0.85);
-    box-shadow: 
-      0 8px 32px 0 rgba(0, 0, 0, 0.1),
-      0 2px 8px 0 rgba(0, 0, 0, 0.06),
-      inset 0 1px 2px 0 rgba(255, 255, 255, 0.8),
-      inset 0 0 1px 0 rgba(255, 255, 255, 0.7),
-      inset 0 -1px 2px 0 rgba(0, 0, 0, 0.08),
-      inset 0 -2px 4px 0 rgba(255, 255, 255, 0.25);
-  }
-
-  .glass-ios-light:hover {
-    border-color: rgba(255, 255, 255, 0.85);
-  }
-
-  .glass-ios-light:active {
-    box-shadow: 
-      0 4px 20px 0 rgba(0, 0, 0, 0.08),
-      inset 0 1px 1px 0 rgba(255, 255, 255, 0.75),
-      inset 0 -1px 1px 0 rgba(255, 255, 255, 0.25);
-  }
-
-  /* Card variant - enhanced for content cards with full layering */
-  .glass-ios-card {
-    position: relative;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.96) 0%,
-      rgba(255, 255, 255, 0.7) 40%,
-      rgba(255, 255, 255, 0.28) 100%
-    );
-    backdrop-filter: blur(28px) saturate(195%) brightness(1.15) contrast(1.08);
-    -webkit-backdrop-filter: blur(28px) saturate(195%) brightness(1.15) contrast(1.08);
-    border: 1px solid rgba(255, 255, 255, 0.72);
-    border-top: 1px solid rgba(255, 255, 255, 0.9);
-    border-left: 1px solid rgba(255, 255, 255, 0.85);
-    box-shadow: 
-      0 10px 40px 0 rgba(0, 0, 0, 0.12),
-      0 3px 10px 0 rgba(0, 0, 0, 0.08),
-      inset 0 1px 2px 0 rgba(255, 255, 255, 0.85),
-      inset 0 0 1px 0 rgba(255, 255, 255, 0.7),
-      inset 0 -1px 2px 0 rgba(0, 0, 0, 0.1),
-      inset 0 -2px 4px 0 rgba(255, 255, 255, 0.22);
     cursor: default;
   }
 
-  /* Modal variant - iOS 26 liquid glass with proper transparency */
-  .glass-ios-modal {
-    position: relative;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.75) 0%,
-      rgba(255, 255, 255, 0.45) 45%,
-      rgba(255, 255, 255, 0.2) 100%
-    );
-    backdrop-filter: blur(60px) saturate(180%) brightness(1.1) contrast(1.05);
-    -webkit-backdrop-filter: blur(60px) saturate(180%) brightness(1.1) contrast(1.05);
-    border: 1px solid rgba(255, 255, 255, 0.45);
-    border-top: 1px solid rgba(255, 255, 255, 0.7);
-    border-left: 1px solid rgba(255, 255, 255, 0.65);
-    /* keep background-color very subtle so we don't kill the gradient */
-    background-color: rgba(255, 255, 255, 0.05);
-    box-shadow: 
-      0 24px 70px 0 rgba(0, 0, 0, 0.15),
-      0 8px 20px 0 rgba(0, 0, 0, 0.1),
-      inset 0 2px 4px 0 rgba(255, 255, 255, 0.6),
-      inset 0 0 2px 0 rgba(255, 255, 255, 0.5),
-      inset 0 -2px 4px 0 rgba(0, 0, 0, 0.08),
-      inset 0 -3px 8px 0 rgba(255, 255, 255, 0.22);
+  .glass-modal {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.45) 50%, rgba(255, 255, 255, 0.2) 100%);
+    backdrop-filter: blur(60px) saturate(180%);
+    -webkit-backdrop-filter: blur(60px) saturate(180%);
+    border-color: rgba(255, 255, 255, 0.45);
   }
 
-  /* Green accent variant with proper layering - using CSS variables */
-  .glass-ios-accent {
-    position: relative;
-    background: linear-gradient(
-      135deg,
-      rgba(var(--accent-400), 0.95) 0%,
-      rgba(var(--accent-500), 0.9) 45%,
-      rgba(var(--accent-600), 0.8) 100%
-    );
-    backdrop-filter: blur(24px) saturate(200%) brightness(1.1) contrast(1.1);
-    -webkit-backdrop-filter: blur(24px) saturate(200%) brightness(1.1) contrast(1.1);
-    border: 1px solid rgba(var(--accent-500), 0.9);
-    border-top: 1px solid rgba(var(--accent-400), 1);
-    border-left: 1px solid rgba(var(--accent-400), 0.95);
+  /* Accent color variant */
+  .glass-accent {
+    background: linear-gradient(135deg, rgba(var(--accent-400), 0.95) 0%, rgba(var(--accent-500), 0.9) 50%, rgba(var(--accent-600), 0.8) 100%);
+    border-color: rgba(var(--accent-500), 0.9);
+    border-top-color: rgba(var(--accent-400), 1);
+    border-left-color: rgba(var(--accent-400), 0.95);
     box-shadow: 
-      0 8px 32px 0 rgba(var(--accent-500), 0.35),
-      0 2px 8px 0 rgba(var(--accent-500), 0.25),
-      inset 0 1px 2px 0 rgba(255, 255, 255, 0.3),
-      inset 0 0 1px 0 rgba(255, 255, 255, 0.25),
-      inset 0 -1px 2px 0 rgba(0, 0, 0, 0.2),
-      inset 0 -2px 4px 0 rgba(var(--accent-600), 0.35);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      0 8px 32px rgba(var(--accent-500), 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.2);
   }
 
-  .glass-ios-accent:hover {
+  .glass-accent:hover {
     border-color: rgba(var(--accent-400), 0.95);
   }
 
-  .glass-ios-accent:active {
-    background: linear-gradient(
-      135deg,
-      rgba(var(--accent-400), 1) 0%,
-      rgba(var(--accent-500), 0.95) 45%,
-      rgba(var(--accent-600), 0.85) 100%
-    );
+  .glass-accent:active {
+    background: linear-gradient(135deg, rgba(var(--accent-400), 1) 0%, rgba(var(--accent-500), 0.95) 50%, rgba(var(--accent-600), 0.85) 100%);
+  }
+
+  /* Interactive states */
+  .glass:hover {
+    border-color: rgba(255, 255, 255, 0.7);
+  }
+
+  .glass:active {
     box-shadow: 
-      0 4px 20px 0 rgba(var(--accent-500), 0.3),
-      inset 0 1px 1px 0 rgba(255, 255, 255, 0.2),
-      inset 0 -1px 1px 0 rgba(0, 0, 0, 0.25);
+      0 4px 20px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
   }
 
-  /* Yellow / secondary accent variant */
-  .glass-ios-orange {
-    position: relative;
-    background: linear-gradient(
-      135deg,
-      rgba(var(--secondary-400), 0.95) 0%,
-      rgba(var(--secondary-500), 0.9) 45%,
-      rgba(var(--secondary-600), 0.85) 100%
-    );
-    backdrop-filter: blur(24px) saturate(200%) brightness(1.1) contrast(1.1);
-    -webkit-backdrop-filter: blur(24px) saturate(200%) brightness(1.1) contrast(1.1);
-    border: 1px solid rgba(var(--secondary-500), 0.9);
-    border-top: 1px solid rgba(var(--secondary-400), 1);
-    border-left: 1px solid rgba(var(--secondary-400), 0.95);
-    box-shadow: 
-      0 8px 32px 0 rgba(var(--secondary-500), 0.35),
-      0 2px 8px 0 rgba(var(--secondary-500), 0.25),
-      inset 0 1px 2px 0 rgba(255, 255, 255, 0.3),
-      inset 0 0 1px 0 rgba(255, 255, 255, 0.25),
-      inset 0 -1px 2px 0 rgba(0, 0, 0, 0.2),
-      inset 0 -2px 4px 0 rgba(var(--secondary-600), 0.35);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .glass-ios-orange:hover {
-    border-color: rgba(var(--secondary-400), 0.95);
-  }
-
-  .glass-ios-orange:active {
-    background: linear-gradient(
-      135deg,
-      rgba(var(--secondary-400), 1) 0%,
-      rgba(var(--secondary-500), 0.95) 45%,
-      rgba(var(--secondary-600), 0.9) 100%
-    );
-    box-shadow: 
-      0 4px 20px 0 rgba(var(--secondary-500), 0.3),
-      inset 0 1px 1px 0 rgba(255, 255, 255, 0.2),
-      inset 0 -1px 1px 0 rgba(0, 0, 0, 0.25);
-  }
-
-  /* Focus states for accessibility */
-  .glass-ios:focus-visible,
-  .glass-ios-light:focus-visible,
-  .glass-ios-card:focus-visible,
-  .glass-ios-accent:focus-visible,
-  .glass-ios-orange:focus-visible {
+  /* Focus states */
+  .glass:focus-visible,
+  .glass-light:focus-visible,
+  .glass-card:focus-visible,
+  .glass-modal:focus-visible,
+  .glass-accent:focus-visible {
     outline: 2px solid rgba(var(--accent-400), 0.6);
     outline-offset: 2px;
-    box-shadow: 
-      0 8px 32px 0 rgba(0, 0, 0, 0.12),
-      inset 0 1px 1px 0 rgba(255, 255, 255, 0.5),
-      inset 0 -1px 1px 0 rgba(255, 255, 255, 0.2),
-      0 0 0 2px rgba(var(--accent-400), 0.3);
   }
 
+  /* Hover utilities */
   .glass-hover {
-    transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+    transition: background 0.25s ease, border-color 0.25s ease;
   }
 
   .glass-hover:hover {
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.45) 0%,
-      rgba(255, 255, 255, 0.35) 50%,
-      rgba(255, 255, 255, 0.28) 100%
-    );
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.35) 50%, rgba(255, 255, 255, 0.25) 100%);
     border-color: rgba(255, 255, 255, 0.65);
   }
 
@@ -354,16 +199,21 @@
   }
 
   .glass-hover-accent:hover {
-    background: linear-gradient(
-      135deg,
-      rgba(var(--accent-500), 0.85) 0%,
-      rgba(var(--accent-500), 0.78) 50%,
-      rgba(var(--accent-500), 0.72) 100%
-    );
+    background: linear-gradient(135deg, rgba(var(--accent-500), 0.85) 0%, rgba(var(--accent-500), 0.75) 50%, rgba(var(--accent-500), 0.65) 100%);
     border-color: rgba(var(--accent-400), 0.8);
-    box-shadow:
-      0 8px 24px 0 rgba(var(--accent-600), 0.3),
-      inset 0 1px 1px 0 rgba(255, 255, 255, 0.25);
     color: #fff;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .glass,
+    .glass-light,
+    .glass-card,
+    .glass-modal,
+    .glass-accent,
+    .glass-hover,
+    .glass-hover-accent {
+      transition: none;
+    }
   }
 }
